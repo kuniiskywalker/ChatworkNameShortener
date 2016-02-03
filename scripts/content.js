@@ -55,13 +55,17 @@ document.body.appendChild(function () {
             var chat = RM.timeline.chat_id2chat_dat[id];
 
             var msg = '';
-            var isPrevMessageMemberNameOnly;
+            var messageMemberNameOnlyCounter = 0;
             chat.msg.split(/\r\n|\r|\n/).forEach(function (v, k) {
 
                 var isMessageMemberNameOnly = false;
 
                 var match = v.match(/^\[To:([0-9]+)\] (.*)$/);
                 if (!match) {
+                    if (messageMemberNameOnlyCounter >= 1) {
+                        msg += "\n";
+                    }
+                    messageMemberNameOnlyCounter = 0;
                     msg += v + "\n";
                 } else {
                     var member_id = match[1];
@@ -69,17 +73,17 @@ document.body.appendChild(function () {
                         AC.getDefaultNickName(member_id) : AC.getNickName(member_id);
 
                     if (!match[2] || match[2].match(new RegExp('^' + member_name + '$'))) {
-                        isMessageMemberNameOnly = true;
+                        messageMemberNameOnlyCounter++;
                         msg += '[To:' + member_id + '] ';
                     } else {
-                        if (isPrevMessageMemberNameOnly && !isMessageMemberNameOnly) {
+                        if (messageMemberNameOnlyCounter >= 1) {
                             msg += "\n";
                         }
                         msg += v + "\n";
+
+                        messageMemberNameOnlyCounter = 0;
                     }
                 }
-
-                isPrevMessageMemberNameOnly = isMessageMemberNameOnly;
             });
 
             var message = document.querySelector("[data-mid='" + id + "'] pre");
