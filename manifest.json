@@ -1,0 +1,25 @@
+{
+    "name": "ChatWorkExt",
+    "manifest_version": 2,
+    "version": "1.2",
+    "description": "",
+    "icons" : {
+      "128": "images/thumb.png"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [{
+        "matches": ["https://www.chatwork.com/*"],
+        "js": ["scripts/content.js"],
+        "run_at": "document_end"
+    }]
+//    "background": {
+//      "scripts": ["scripts/background.js"]
+//    },
+//    "browser_action": {
+//        "default_title": "ChatWorkExt"
+//    },
+
+//    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+}
