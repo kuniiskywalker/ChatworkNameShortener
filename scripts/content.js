@@ -31,7 +31,7 @@ function handleMutatedNode(node) {
 
     var source = function (ids, script_tag_id) {
         ids.forEach(function (id) {
-            _chatworkNameShorter(id);
+            _chatworkNameShortener(id);
         });
         document.body.removeChild(document.querySelector("script[data-id='" + script_tag_id + "']"));
     };
@@ -51,7 +51,7 @@ document.body.appendChild(function () {
 
         var sourceCodeOfMethod = function (id) {
             var chat = RM.timeline.chat_id2chat_dat[id];
-            if (!chat || !chat.msg) {
+            if (!chat || !chat.msg || !chat.msg.match(/^(\[To:\d+\]).*\r?\n/gm)) {
                 return false;
             }
             var msg = chat.msg.replace(/^(\[To:\d+\]).*\r?\n/gm, '$1').replace(/(\[.*\])/, '$1\n');
