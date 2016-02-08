@@ -1,7 +1,7 @@
 {
     "name": "ChatworkNameShortener",
     "manifest_version": 2,
-    "version": "1.0",
+    "version": "1.2",
     "description": "",
     "icons" : {
       "128": "images/thumb.png"
