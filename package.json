@@ -1,0 +1,35 @@
+{
+  "name": "ChatworkNameShortener",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "test": "mocha --compilers js:espower-babel/guess test/*.js",
+    "test:watch": "mocha -w --compilers js:espower-babel/guess test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kuniiskywalker/ChatworkNameShortener.git"
+  },
+  "directories": {
+    "test": "test/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "espower-babel": "^4.0.1",
+    "mocha": "^2.4.5",
+    "power-assert": "^1.2.0",
+    "webpack": "^1.12.13"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}

@@ -8,7 +8,7 @@
     },
     "content_scripts": [{
         "matches": ["https://www.chatwork.com/*"],
-        "js": ["scripts/content.js"],
+        "js": ["lib/bundle.js"],
         "run_at": "document_end"
     }]
 }
